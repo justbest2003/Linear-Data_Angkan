@@ -1,5 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .product-image {
   width: 100px; /* ปรับขนาดความกว้างของรูปภาพ */
   height: 100px; /* ปรับขนาดความสูงของรูปภาพให้สัดส่วนถูกต้อง */
   margin-bottom: 10px;
+}
+
+.logo{
+  padding: 20px;
+  text-align: center;
 }

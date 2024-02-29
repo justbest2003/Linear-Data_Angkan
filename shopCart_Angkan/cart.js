@@ -58,27 +58,17 @@ function updateCartDisplay() {
   }
 }
 
-// Import html2pdf library
-// ไม่ต้อง Import เพราะเราใช้ CDN แล้ว
+document.getElementById("createPDFButton").addEventListener("click", () => {
+  const element = document.getElementById("cart").cloneNode(true);
+  const opt = {
+    margin: 2,
+    filename: "shopping_cart.pdf",
+    image: { type: "jpeg", quality: 1 },
+    html2canvas: { scale: 2 },
+    jsPDF: { format: [100, 80], orientation: "landscape" },
+  };
 
-// Listen for click event on screenshotButton
-document.getElementById("screenshotButton").addEventListener("click", () => {
-    // Check if cart is empty
-    if (Object.keys(cart).length === 0) {
-        alert("No items in cart to take screenshot.");
-        return;
-    }
-
-    // Take screenshot and create PDF
-    takeScreenshot();
+  // สร้าง PDF จาก HTML ของตะกร้าสินค้า
+  html2pdf().from(element).set(opt).save();
 });
-
-// Function to take screenshot and create PDF
-function takeScreenshot() {
-    // Create HTML element to contain cart items
-    const cartHTML = document.getElementById("cart").outerHTML;
-
-    // Use html2pdf library to create PDF from HTML content
-    html2pdf().from(cartHTML).save("cart.pdf");
-}
 
