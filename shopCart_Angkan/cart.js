@@ -41,7 +41,7 @@ function updateCartDisplay() {
 
     const listItem = document.createElement("li");
     listItem.classList.add("list-group-item");
-    listItem.textContent = `Product ${productId} : ${item.quantity} x $${item.price} = $${itemTotalPrice}`;
+    listItem.textContent = `สินค้า : ${productId} : ${item.quantity} x $${item.price} = $${itemTotalPrice}`;
     cartElement.appendChild(listItem);
   }
 
@@ -58,17 +58,14 @@ function updateCartDisplay() {
   }
 }
 
-document.getElementById("createPDFButton").addEventListener("click", () => {
-  const element = document.getElementById("cart").cloneNode(true);
-  const opt = {
-    margin: 2,
-    filename: "shopping_cart.pdf",
-    image: { type: "jpeg", quality: 1 },
-    html2canvas: { scale: 2 },
-    jsPDF: { format: [100, 80], orientation: "landscape" },
-  };
+document.getElementById("createPDFButton").addEventListener("click", function() {
+  // Capture the receipt container element
+  const receiptContainer = document.getElementById("cart");
 
-  // สร้าง PDF จาก HTML ของตะกร้าสินค้า
-  html2pdf().from(element).set(opt).save();
+  // Use dom-to-image to convert the receipt container to an image
+  domtoimage.toBlob(receiptContainer)
+      .then(function(blob) {
+          // Save the image as a file using FileSaver.js
+          saveAs(blob, "bill.png");
+      });
 });
-
