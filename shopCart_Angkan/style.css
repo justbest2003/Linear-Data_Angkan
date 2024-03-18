@@ -9,11 +9,56 @@ body{
   background-color: #fdf9f9;
 }
 
+.custom-purple-bg {
+  background-color: #c19cc8; 
+}
+
 .product-image {
-  width: 100px; /* ปรับขนาดความกว้างของรูปภาพ */
-  height: 100px; /* ปรับขนาดความสูงของรูปภาพให้สัดส่วนถูกต้อง */
+  width: 100px; 
+  height: 100px; 
   margin-bottom: 10px;
 }
-.custom-purple-bg {
-  background-color: #c19cc8; /* You can change this hex color code to any light purple color you prefer */
+
+#card-item {
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#card-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ribbons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.ribbon {
+  display: inline-block;
+  padding: 5px 20px;
+  background-color: #ff4d4d;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.onsep {
+  font-size: 12px;
+}
+
+.per {
+  font-size: 12px;
+}
+
+.original-price-line {
+  text-decoration: line-through;
+}
+
+.discounted-price {
+  color: red;
+  font-weight: bold;
 }
